@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="JWiFiTarget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fr-Je-z2m">
+                                <rect key="frame" x="36" y="5" width="274" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.013362068965517242" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="No WiFi Connected" image="wifi">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="wifiButtonClick:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="lCW-ep-Drr"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right.png" translatesAutoresizingMaskIntoConstraints="NO" id="zzb-mK-bx3">
+                                <rect key="frame" x="290" y="15" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="K6c-tg-PRo"/>
+                                    <constraint firstAttribute="height" constant="20" id="xth-Q7-aAP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="2fr-Je-z2m" secondAttribute="bottom" constant="5" id="CqB-sn-cj2"/>
+                            <constraint firstItem="2fr-Je-z2m" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="20" id="OH6-K7-GHu"/>
+                            <constraint firstItem="2fr-Je-z2m" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="5" id="OYI-rf-ola"/>
+                            <constraint firstAttribute="trailing" secondItem="zzb-mK-bx3" secondAttribute="trailing" constant="10" id="UBc-52-dL1"/>
+                            <constraint firstItem="zzb-mK-bx3" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="nfJ-44-QhO"/>
+                            <constraint firstAttribute="trailing" secondItem="2fr-Je-z2m" secondAttribute="trailing" constant="10" id="oNV-J1-kPu"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="50"/>
+                    <connections>
+                        <outlet property="wifiButton" destination="2fr-Je-z2m" id="HF2-WP-Dbn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="281"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="right.png" width="30" height="30"/>
+        <image name="wifi" width="30" height="30"/>
+    </resources>
+</document>
