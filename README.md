@@ -16,8 +16,11 @@ Show the current connected WiFi in your notification center.
 
 ## Author
 
-jinxiansen, email: hi@jinxiansen.com
+#####If you wish to contact me, email at: hi@jinxiansen.com
+
+####新浪微博 : [@晋先森](http://weibo.com/3205872327/)
+####Twitter : [@jinxiansen](https://twitter.com/jinxiansen)
 
 ## License
 
-JToday is available under the (MIT)License.
+JWiFi is released under the MIT license. See LICENSE for details.
