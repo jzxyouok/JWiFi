@@ -8,18 +8,21 @@ Show the current connected WiFi in your notification center.
 
 (基于Xcode 7.3, Swift 2.2)
 
-***
- 
- ![](6.png)
+[![](app.jpg)](https://itunes.apple.com/cn/app/id1131504234)
+
+
+# screenshot
+
+![](6.png)
 
  
 
-## Author
+## Contacts
 
 #####If you wish to contact me, email at: hi@jinxiansen.com
 
-####新浪微博 : [@晋先森](http://weibo.com/3205872327/)
-####Twitter : [@jinxiansen](https://twitter.com/jinxiansen)
+#####新浪微博 : [@晋先森](http://weibo.com/3205872327/)
+#####Twitter : [@jinxiansen](https://twitter.com/jinxiansen)
 
 ## License
 
