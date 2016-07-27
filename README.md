@@ -8,7 +8,7 @@ Show the current connected WiFi in your notification center.
 
 (基于Xcode 7.3, Swift 2.2)
 
-[![](app.jpg)](https://itunes.apple.com/cn/app/id1131504234)
+[![](app-store-logo.png)](https://itunes.apple.com/cn/app/id1131504234)
 
 
 # screenshot
