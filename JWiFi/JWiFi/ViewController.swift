@@ -7,7 +7,8 @@
 //
 
 import UIKit
- 
+
+let email = "hi@jinxiansen.com"
  
 class ViewController: UIViewController {
 
@@ -20,6 +21,10 @@ class ViewController: UIViewController {
 
         configDatas()
 
+    }
+
+    override func viewDidLayoutSubviews() {
+        updateScrollView()
     }
 
     func configDatas() {
@@ -38,7 +43,7 @@ class ViewController: UIViewController {
 
     func updateScrollView() {
 
-        let width = scrollView.frame.size.width / 5 * 4
+        let width:CGFloat = scrollView.frame.size.height * 1.5
 
         for index in 0..<datas.count {
 
@@ -62,9 +67,34 @@ class ViewController: UIViewController {
         scrollView.contentSize = CGSizeMake((width + 10) * CGFloat(datas.count), 0)
     }
 
-    override func viewDidLayoutSubviews() {
-           updateScrollView()
+    @IBAction func logoButtonClick(sender: AnyObject) {
+
+        let board = UIPasteboard.generalPasteboard()
+        board.string = email
+        let alert = UIAlertController.init(title: email, message: "如果你希望联系我,可以发邮件于我(已复制)", preferredStyle: UIAlertControllerStyle.Alert)
+
+        let action = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) in
+
+        }
+        alert.addAction(action)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
+
+
+//
+//    func addBoldFontOfString(string :String) -> NSMutableAttributedString {
+//
+//        let attributeString = NSMutableAttributedString.init(string: string)
+//        attributeString.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(17), range: NSRange.init(location: 3, length: 2))
+//
+//        return attributeString
+//    }
+
+
+
+
+
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent

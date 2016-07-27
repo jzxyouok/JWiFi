@@ -33,6 +33,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     // http://stackoverflow.com/questions/31755692/swift-cncopysupportedinterfaces-not-valid
     func fetchSSIDInfo() ->  String {
+
+    #if TARGET_IPHONE_SIMULATOR
+           return "This is a simulator"
+    #else
+
         var currentSSID = ""
         if let interfaces:CFArray! = CNCopySupportedInterfaces() {
             for i in 0..<CFArrayGetCount(interfaces){
@@ -48,13 +53,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             }
         }
         return currentSSID
+     #endif
     }
 
 
 
     @IBAction func wifiButtonClick(sender: UIButton) {
 
-        self.extensionContext?.openURL(NSURL.init(string:"prefs:root=WIFI")!, completionHandler: { (result) in
+      //使用 prefs:root=WIFI 这个API会被拒，惨不忍睹！
+     //self.extensionContext?.openURL(NSURL.init(string:"prefs:root=WIFI")!, completionHandler: { (result) in  })
+    self.extensionContext?.openURL(NSURL.init(string: "JWiFi://com.jinxiansen.JWiFi")!, completionHandler: { (result) in
+            print("open url result :\(result)")
         })
     }
 

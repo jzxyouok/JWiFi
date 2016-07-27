@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,18 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wifialpha" translatesAutoresizingMaskIntoConstraints="NO" id="OFv-IA-llN">
-                                <rect key="frame" x="105" y="62" width="110" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="Fdf-Vb-cEy"/>
-                                    <constraint firstAttribute="height" constant="100" id="qtO-v2-h7Q"/>
-                                </constraints>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-oC-Cbl">
-                                <rect key="frame" x="0.0" y="374" width="320" height="184"/>
+                                <rect key="frame" x="0.0" y="378" width="320" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="Cyf-x2-CAn"/>
+                                </constraints>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current WiFi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7W-Dx-t6j">
-                                <rect key="frame" x="20" y="172" width="280" height="20"/>
+                                <rect key="frame" x="20" y="232" width="280" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="rBd-4R-B7a"/>
                                 </constraints>
@@ -37,8 +32,8 @@
                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show the current connected WiFi in your notification center" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ5-3b-mC4">
-                                <rect key="frame" x="20" y="202" width="280" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在你的控制中心显示当前所连WiFi" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ5-3b-mC4">
+                                <rect key="frame" x="20" y="262" width="280" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="tVU-0P-w0L"/>
                                 </constraints>
@@ -46,21 +41,31 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5i8-22-5MB">
+                                <rect key="frame" x="110.5" y="122" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Okj-3d-K2F"/>
+                                    <constraint firstAttribute="width" constant="100" id="Z5p-MF-Rda"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="wifialpha"/>
+                                <connections>
+                                    <action selector="logoButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Z1-oL-GvA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.27843137254901962" blue="0.36862745098039218" alpha="0.19687499999999999" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wZ5-3b-mC4" firstAttribute="top" secondItem="C7W-Dx-t6j" secondAttribute="bottom" constant="10" id="BLp-ao-tId"/>
-                            <constraint firstItem="OFv-IA-llN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="42" id="Cny-A8-qc9"/>
                             <constraint firstItem="wZ5-3b-mC4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="JeX-nR-uUe"/>
+                            <constraint firstItem="5i8-22-5MB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MUw-DX-6FX"/>
                             <constraint firstAttribute="trailing" secondItem="C7W-Dx-t6j" secondAttribute="trailing" constant="20" id="RzJ-yb-I6a"/>
-                            <constraint firstItem="nLB-oC-Cbl" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="23:71" id="aby-RC-49W"/>
+                            <constraint firstItem="wZ5-3b-mC4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YXi-AD-I3y"/>
+                            <constraint firstItem="C7W-Dx-t6j" firstAttribute="top" secondItem="5i8-22-5MB" secondAttribute="bottom" constant="10" id="cge-cU-AEa"/>
                             <constraint firstItem="C7W-Dx-t6j" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="iZW-2w-06v"/>
                             <constraint firstAttribute="trailing" secondItem="wZ5-3b-mC4" secondAttribute="trailing" constant="20" id="kBG-Ar-gS7"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nLB-oC-Cbl" secondAttribute="bottom" constant="10" id="kwA-if-OfD"/>
                             <constraint firstItem="nLB-oC-Cbl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qfr-bo-gN0"/>
-                            <constraint firstItem="C7W-Dx-t6j" firstAttribute="top" secondItem="OFv-IA-llN" secondAttribute="bottom" constant="10" id="vL7-DX-joM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nLB-oC-Cbl" secondAttribute="bottom" constant="10" id="tFH-V3-dGo"/>
+                            <constraint firstItem="wZ5-3b-mC4" firstAttribute="top" secondItem="C7W-Dx-t6j" secondAttribute="bottom" constant="10" id="tdS-ZZ-zZi"/>
                             <constraint firstAttribute="trailing" secondItem="nLB-oC-Cbl" secondAttribute="trailing" id="vdw-ca-ROp"/>
-                            <constraint firstItem="OFv-IA-llN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yFQ-zq-QVs"/>
                         </constraints>
                     </view>
                     <connections>
