@@ -57,11 +57,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
 
 
-
     @IBAction func wifiButtonClick(sender: UIButton) {
 
-      //使用 prefs:root=WIFI 这个API会被拒，惨不忍睹！
-     //self.extensionContext?.openURL(NSURL.init(string:"prefs:root=WIFI")!, completionHandler: { (result) in  })
+      //使用 prefs:root=WIFI 这个API会被惨拒！
+        //self.extensionContext?.openURL(NSURL.init(string:"prefs:root=WIFI")!, completionHandler: { (result) in  })
+
     self.extensionContext?.openURL(NSURL.init(string: "JWiFi://com.jinxiansen.JWiFi")!, completionHandler: { (result) in
             print("open url result :\(result)")
         })
