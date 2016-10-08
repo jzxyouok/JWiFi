@@ -8,7 +8,7 @@
 
 import UIKit
 import NotificationCenter
-//import NetworkExtension
+
 import SystemConfiguration.CaptiveNetwork
 
 class TodayViewController: UIViewController, NCWidgetProviding {
@@ -18,51 +18,51 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.preferredContentSize = CGSizeMake(self.view.frame.size.width,50)
+        self.preferredContentSize = CGSize(width: self.view.frame.size.width,height: 50)
 
         wifiButton.titleEdgeInsets = UIEdgeInsetsMake(0,10, 0,0)
 
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         let currentSSID = self.fetchSSIDInfo()
 
-         wifiButton.setTitle(currentSSID.characters.count > 0 ? currentSSID : "No WiFi Connected", forState: UIControlState.Normal)
+         wifiButton.setTitle(currentSSID.characters.count > 0 ? currentSSID : "No WiFi Connected", for: UIControlState())
     }
-    // http://stackoverflow.com/questions/31755692/swift-cncopysupportedinterfaces-not-valid
+
+
     func fetchSSIDInfo() ->  String {
 
     #if TARGET_IPHONE_SIMULATOR
            return "This is a simulator"
     #else
-
-        var currentSSID = ""
-        if let interfaces:CFArray! = CNCopySupportedInterfaces() {
-            for i in 0..<CFArrayGetCount(interfaces){
-                let interfaceName: UnsafePointer<Void> = CFArrayGetValueAtIndex(interfaces, i)
-                let rec = unsafeBitCast(interfaceName, AnyObject.self)
-                let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)")
-                if unsafeInterfaceData != nil {
-                    let interfaceData = unsafeInterfaceData! as Dictionary!
-                    currentSSID = interfaceData["SSID"] as! String
-                } else {
-                    currentSSID = ""
+        let interfaces = CNCopySupportedInterfaces()
+        var ssid = ""
+        if interfaces != nil {
+            let interfacesArray = CFBridgingRetain(interfaces) as! Array<AnyObject>
+            if interfacesArray.count > 0 {
+                let interfaceName = interfacesArray[0] as! CFString
+                let ussafeInterfaceData = CNCopyCurrentNetworkInfo(interfaceName)
+                if (ussafeInterfaceData != nil) {
+                    let interfaceData = ussafeInterfaceData as! Dictionary<String, Any>
+                    ssid = interfaceData["SSID"]! as! String
                 }
             }
         }
-        return currentSSID
-     #endif
+        return ssid
+
+    #endif
     }
 
 
-    @IBAction func wifiButtonClick(sender: UIButton) {
+    @IBAction func wifiButtonClick(_ sender: UIButton) {
 
       //使用 prefs:root=WIFI 这个API会被惨拒！
         //self.extensionContext?.openURL(NSURL.init(string:"prefs:root=WIFI")!, completionHandler: { (result) in  })
 
-    self.extensionContext?.openURL(NSURL.init(string: "JWiFi://com.jinxiansen.JWiFi")!, completionHandler: { (result) in
+    self.extensionContext?.open(URL.init(string: "JWiFi://com.jinxiansen.JWiFi")!, completionHandler: { (result) in
             print("open url result :\(result)")
         })
     }
@@ -74,18 +74,29 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
 
 
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0,30, 0, 0)
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
 
-        completionHandler(NCUpdateResult.NewData)
+        completionHandler(NCUpdateResult.newData)
     }
-    
+
+//    @available(iOSApplicationExtension 10.0, *)
+//    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize){
+//        if (activeDisplayMode == NCWidgetDisplayMode.compact) {
+//            self.preferredContentSize = CGSize(width: self.view.frame.size.width,height: 50)
+//        }
+//        else {
+//            self.preferredContentSize = CGSize(width: self.view.frame.size.width,height: 100)
+//        }
+//    }
+
+
 }

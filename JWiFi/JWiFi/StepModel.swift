@@ -16,10 +16,10 @@ class StepModel: NSObject {
 
     init(dict: [String : AnyObject]) {
         super.init()
-        setValuesForKeysWithDictionary(dict)
+        setValuesForKeys(dict)
     }
 
-    override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
+//    override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
 
 
 }
