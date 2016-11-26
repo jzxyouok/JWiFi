@@ -12,7 +12,6 @@ Show the current connected WiFi in your notification center.
 
 [![](app-store-logo.png)](https://itunes.apple.com/cn/app/id1131504234)
 
-
 # screenshot
 
 ![](6.png)
